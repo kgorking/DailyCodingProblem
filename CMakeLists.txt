@@ -9,6 +9,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(cppcoro REQUIRED)
 target_link_libraries(DailyCodingProblem INTERFACE cppcoro)
 
+# Include sub-projects.
+add_subdirectory ("intro")
+add_subdirectory ("day1_find_pair_sum")
+
 if (MSVC)
     target_compile_options(DailyCodingProblem INTERFACE
         /std:c++latest
@@ -85,6 +89,3 @@ else()
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
     endif()
 endif()
-
-# Include sub-projects.
-add_subdirectory ("intro")
