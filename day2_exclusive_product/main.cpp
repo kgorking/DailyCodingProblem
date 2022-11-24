@@ -5,7 +5,6 @@
 #include <algorithm>
 #include <numeric>
 #include <iostream>
-#include <ranges>
 #include <vector>
 
 void print_vec(auto const& vec) {
@@ -20,10 +19,9 @@ std::vector<int> exclusive_product_v1(std::vector<int> list) {
 
 	int const total = std::accumulate(list.begin(), list.end(), 1, std::multiplies<int>{});
 
-	auto result = list;
-	for(int& i : result)
+	for(int& i : list)
 		i = total / i;
-	return result;
+	return list;
 }
 
 std::vector<int> exclusive_product_v2(std::vector<int> list) {
@@ -45,7 +43,7 @@ std::vector<int> exclusive_product_v3(std::vector<int> const& list) {
 
 	std::vector<int> result(list.size());
 	int product = 1;
-	for (size_t i=0; i<list.size(); i++) {
+	for (size_t i=0; i<list.size(); i++) { // exclusive scan
 		result[i] = product;
 		product *= list[i];
 	}
@@ -59,7 +57,6 @@ std::vector<int> exclusive_product_v3(std::vector<int> const& list) {
 
 int main() {
 	std::vector const v1{1, 2, 3, 4, 5};
-
 	print_vec(exclusive_product_v1(v1));
 	print_vec(exclusive_product_v2(v1));
 	print_vec(exclusive_product_v3(v1));
