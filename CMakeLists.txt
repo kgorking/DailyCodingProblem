@@ -12,6 +12,7 @@ target_link_libraries(DailyCodingProblem INTERFACE cppcoro)
 # Include sub-projects.
 add_subdirectory ("intro")
 add_subdirectory ("day1_find_pair_sum")
+add_subdirectory ("day2_exclusive_product")
 
 if (MSVC)
     target_compile_options(DailyCodingProblem INTERFACE
